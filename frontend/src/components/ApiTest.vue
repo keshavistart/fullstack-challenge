@@ -10,7 +10,7 @@ export default {
 
   methods: {
     async fetchData() {
-      const url = 'http://localhost/'
+      const url = 'http://localhost/fullstack-challenge/api/public/'
       this.apiResponse = await (await fetch(url)).json()
     }
   }
@@ -23,9 +23,8 @@ export default {
   </div>
 
   <div v-if="apiResponse">
-    The api responded with: <br />
-    <code>
-    {{ apiResponse }}
-    </code>
+    <div  v-for="user in apiResponse.users" >
+      <li class=" text-gray-900 ">{{`${user.name}`}}</li>
+    </div>       
   </div>
 </template>
